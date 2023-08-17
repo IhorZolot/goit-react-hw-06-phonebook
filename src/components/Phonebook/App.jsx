@@ -3,14 +3,16 @@ import { ContactList } from './ContactList';
 import { ContactFilter } from './ContactFilter';
 import { Container } from './PhonebookContact.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from 'redux/contactsSlice';
+import { addContact, deleteContact, setFilter } from 'redux/contactsSlice';
 
 export const App = () => {
   const contacts = useSelector(state => state.contacts);
   const filter = useSelector(state => state.filter);
   const dispatch = useDispatch();
+
   const handleChangeSearchValue = event => {
     const { value } = event.target;
+    dispatch(setFilter(value));
     // setFilter(value);
   };
 
@@ -27,6 +29,7 @@ export const App = () => {
   };
 
   const handleSubmit = newContact => {
+    dispatch(addContact(newContact));
     // setContacts(prevContacts => [...prevContacts, newContact]);
   };
 
