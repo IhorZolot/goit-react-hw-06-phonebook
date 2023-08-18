@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { nanoid } from 'nanoid';
+import PropTypes from 'prop-types';
 
 import {
   InputForm,
@@ -66,4 +67,9 @@ export const ContactForm = ({ checkDuplicateContact, onSubmit }) => {
       <Button type="submit">Add Contact</Button>
     </InputForm>
   );
+};
+
+ContactForm.propTypes = {
+  checkDuplicateContact: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
 };
